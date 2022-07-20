@@ -1,0 +1,25 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <div>
+            <input name="name" type="text" placeholder="Name..." [(ngModel)]="user.name" required #nameInput="ngModel">
+            <p *ngIf="nameInput.invalid && nameInput.touched" class="error-msg">Please introduce your name</p>
+        </div>
+        <div>
+            <input name="email" type="email" placeholder="Email..." [(ngModel)]="user.email" required email #emailInput="ngModel">
+            <p *ngIf="emailInput.invalid && emailInput.dirty" class="error-msg">Please introduce a valid email</p>
+        </div>
+        <div>
+            <input name="occupation" type="text" placeholder="Occupation..." [(ngModel)]="user.occupation" #occupationInput="ngModel">
+            <p *ngIf="occupationInput.invalid && occupationInput.touched" class="error-msg">Please introduce a occupation </p>
+        </div>
+        <div>
+            <input name="content" type="text" placeholder="Content..." [(ngModel)]="user.content" required minlength="10" maxlength="255" #contentInput="ngModel">
+            <p *ngIf="contentInput.invalid && contentInput.touched" class="error-msg">Please introduce a content</p>
+        </div>
+        <div>
+            <input name="subject" type="text" placeholder="Subject..." [(ngModel)]="user.subject" required #subjectInput="ngModel">
+            <p *ngIf="subjectInput.invalid && subjectInput.touched" class="error-msg">Please introduce a subject</p>
+        </div>
+        <button type="submit" [disabled]="form.invalid || form.submitted" >Submit</button>
+    </form>
+</div>
